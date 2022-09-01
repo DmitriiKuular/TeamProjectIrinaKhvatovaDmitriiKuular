@@ -16,16 +16,6 @@ public class GameStoreTest {
         assertTrue(store.containsGame(game));
     }
 
-    @Test  //тест проверяет, есть ли такая игра в каталоге, тест не проходит - issue 10
-    public void shouldNotAddOldGame() {
-
-        GameStore store = new GameStore();
-        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-        Game game1 = new Game("Нетология Баттл Онлайн", "Аркады", store);
-
-        assertTrue(store.containsGame(game1));
-    }
-
     @Test   //тест проверяет наличие игры в каталоге, тест проходит - такой игры в каталоге нет
     public void shouldReturnFalseAddGame() {
 
@@ -107,5 +97,16 @@ public class GameStoreTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test  //тест на поиск лучшего игрока, тест не проходит, если время игры равно 1 час - issue 11
+    public void shouldGetMostPlayerIfGameTimeIsOneHour() {
+
+        GameStore store = new GameStore();
+
+        store.addPlayTime("Katya", 1);
+
+        String actual = store.getMostPlayer();
+        String expected = "Katya";
+        assertEquals(expected, actual);
+    }
     // другие ваши тесты
 }
