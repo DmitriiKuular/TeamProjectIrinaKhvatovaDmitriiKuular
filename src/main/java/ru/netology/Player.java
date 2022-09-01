@@ -28,11 +28,14 @@ public class Player {
      * если игра уже была, никаких изменений происходить не должно
      */
     public void installGame(Game game) {
-
-        playedTime.put(game, 0);
+        int time = 0;
+        for (Game key : playedTime.keySet()) {
+            if (key == game) {
+                time = playedTime.get(game);
+            }
+        }
+        playedTime.put(game, time);
     }
-
-
 
     /**
      * игрок играет в игру game на протяжении hours часов
