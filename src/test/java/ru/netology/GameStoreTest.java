@@ -30,12 +30,20 @@ public class GameStoreTest {
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
+
+        Player player = new Player("Gosha");
+        player.play(game, 8);
+
+
         store.addPlayTime("Katya", 2);
         store.addPlayTime("Kolya", 3);
         store.addPlayTime("Katya", 4);
         store.addPlayTime("Petya", 5);
 
-        String expected = "Katya";
+
+        String expected = "Gosha";
+
+
         String actual = store.getMostPlayer();
 
         Assertions.assertEquals(expected, actual);
