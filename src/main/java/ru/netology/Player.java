@@ -65,7 +65,7 @@ public class Player {
             if (game.getGenre().equals(genre)) {
                 sum += playedTime.get(game);
             } else {
-                sum = 0;
+                continue;
             }
         }
         return sum;
