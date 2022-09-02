@@ -76,6 +76,16 @@ public class Player {
      * Если в игры этого жанра не играли, возвращается null
      */
     public Game mostPlayerByGenre(String genre) {
-        return null;
+        int hours = 0;
+        Game popGame = null;
+        for (Game game : playedTime.keySet()) {
+            if (game.getGenre().equals(genre)) {
+                if (playedTime.get(game) > hours) {
+                    hours = playedTime.get(game);
+                    popGame = game;
+                }
+            }
+        }
+        return popGame;
     }
 }
