@@ -73,12 +73,14 @@ public class PlayerTest {
 
     @Test //Шестой нерабочий тест. Не суммирует время нескольких игр одного жанра
     public void shouldSumGenreIfSeveralGames() {
+        player.installGame(game);
         player.installGame(game1);
         player.installGame(game2);
         player.installGame(game3);
         player.play(game1, 15);
         player.play(game2, 5);
         player.play(game3, 8);
+        player.play(game, 1);
 
         int expected = 28;
         int actual = player.sumGenre("Shooter");
@@ -123,6 +125,28 @@ public class PlayerTest {
         player.installGame(game2);
         player.installGame(game3);
         Game expected = null;
+        Game actual = player.mostPlayerByGenre("Shooter");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldGetName() {
+        String expected = "Petya";
+        String actual = player.getName();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldShowMostPopularGameIfEquals() {
+        player.installGame(game);
+        player.installGame(game1);
+        player.installGame(game2);
+        player.installGame(game3);
+        player.play(game1, 15);
+        player.play(game2, 16);
+        player.play(game3, 12);
+        player.play(game1, 1);
+        Game expected = game2;
         Game actual = player.mostPlayerByGenre("Shooter");
         assertEquals(expected, actual);
     }
