@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class GameStoreTest {
-
     @Test   //тест позволяет добавить игру в каталог - не находит в каталоге добавленной игры - issue 9
     public void shouldAddGame() {
 
@@ -21,6 +20,7 @@ public class GameStoreTest {
 
         GameStore store = new GameStore();
         Game game2 = new Game("Half-Life", "Шутеры", store);
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
         assertFalse(store.containsGame(game2));
     }
@@ -30,8 +30,8 @@ public class GameStoreTest {
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
-
         Player player = new Player("Gosha");
+        player.installGame(game);
         player.play(game, 8);
 
 

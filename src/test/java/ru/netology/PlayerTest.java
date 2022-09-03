@@ -135,20 +135,5 @@ public class PlayerTest {
         String actual = player.getName();
         assertEquals(expected, actual);
     }
-
-    @Test
-    public void shouldShowMostPopularGameIfEquals() {
-        player.installGame(game);
-        player.installGame(game1);
-        player.installGame(game2);
-        player.installGame(game3);
-        player.play(game1, 15);
-        player.play(game2, 16);
-        player.play(game3, 12);
-        player.play(game1, 1);
-        Game expected = game2;
-        Game actual = player.mostPlayerByGenre("Shooter");
-        assertEquals(expected, actual);
-    }
     // другие ваши тесты
 }
