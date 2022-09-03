@@ -19,7 +19,7 @@ public class PlayerTest {
     public void shouldInstallGame() {
         player.installGame(game2);
         int expected = 0;
-        int actual = player.play(game2,0);
+        int actual = player.play(game2, 0);
         assertEquals(expected, actual);
     }
 
@@ -53,7 +53,9 @@ public class PlayerTest {
 
     @Test //Четвертый нерабочий тест.Не выдвет exception
     public void shouldShowException() {
-        assertThrows(NotSetupException.class, () -> {player.play(game, 0);});
+        assertThrows(NotSetupException.class, () -> {
+            player.play(game, 0);
+        });
     }
 
     @Test //Пятый нерабочий тест. Не суммирует время одной игры жанра
